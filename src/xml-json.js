@@ -1,5 +1,7 @@
 (function () {
 
+'use strict';
+
 function extend (base, obj) {
     if (Object.prototype.toString.call(base) !== '[object Object]') {
         base = {};
@@ -137,5 +139,5 @@ this['XMLJSON'] = {
     Parser: Parser
 };
 
-}).call(this || self);
+}).call(window || global);
 
