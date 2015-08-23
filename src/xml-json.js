@@ -52,9 +52,9 @@ Parser.prototype.parseStringToJSON = function (xml) {
 Parser.prototype._serialiseNode = function (node) {
     var item = {
         name: node.nodeName,
-        attr: this._serialiseAttributes(node),
+        attributes: this._serialiseAttributes(node),
         children: [],
-        value: node.nodeName === '#text' ? node.textContent : null
+        value: this._hasNodeValue(node) ? node.nodeValue : null
     };
 
     var children = array(node.childNodes);
@@ -68,7 +68,19 @@ Parser.prototype._serialiseNode = function (node) {
         this._removeEmptyTextNodes(item.children);
     }
 
+    if (item.children.length === 1 && this._hasNodeValue(item.children[0])) {
+        item.value = item.children[0].value;
+        item.children = [];
+    }
+
     return item;
+};
+
+Parser.prototype._hasNodeValue = function (node) {
+    var nodeName = node.nodeName || node.name;
+
+    return nodeName === '#text' ||
+           nodeName === '#cdata-section';
 };
 
 Parser.prototype._removeEmptyTextNodes = function (children) {

@@ -5,7 +5,7 @@
 </head>
 <body>
     <script src="../src/xml-json.js"></script>
-    <script>
+    <!--<script>
         var parser = new XMLJSON.Parser();
         var xml = parser.parseString('\
             <root>\
@@ -70,6 +70,19 @@
         ');
         console.log(xml);
         console.log(JSON.stringify(xml, null, '  '));
+    </script>-->
+    <script>
+        var parser = new XMLJSON.Parser();
+        var xml = parser.parseString('\
+            <foo>\
+                <bar baz="123"><![CDATA[\
+                    Hello World\n\
+                    ABCDEFGHIJKLMNOP\
+                ]]></bar>\
+            </foo>\
+        ');
+
+        console.log(xml);
     </script>
 </body>
 </html>
