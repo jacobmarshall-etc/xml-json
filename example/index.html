@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <script src="../src/xml-json.js"></script>
+    <script>
+        var parser = new XMLJSON.Parser();
+        var xml = parser.parseString('\
+            <root>\
+                <node label="Foo" type="shared" isBranch="true" icon="sharedIcon" isOpen="false" path="~/Desktop/Foo.xml" modified="1435465261000">\
+                    <qobject label="Overprint Black Stroke" type="shared" icon="objectAppIcon" isBranch="false"/>\
+                    <qtext label="Dash Dash to Em-dash" type="shared" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Straight Double to Typographers Quote" type="shared" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Dash Dash to Em-dash" type="shared" icon="textAppIcon" isBranch="false"/>\
+                    <node label="Set 1" type="shared" isBranch="true" icon="folderTree" isOpen="true">\
+                        <node label="Set 1" type="shared" isBranch="true" icon="folderTree" isOpen="true"/>\
+                    </node>\
+                    <qobject label="Drop Shadow" type="shared" icon="objectAppIcon" isBranch="false"/>\
+                    <qglyph label="Foobar" type="shared" icon="glyphIcon" isBranch="false"/>\
+                    <qobject label="Test Object" type="shared" icon="objectUserIcon" isBranch="false"/>\
+                    <qgrep label="Multiple Space to Single Space" type="shared" icon="grepApplIcon" isBranch="false"/>\
+                    <qgrep label="Multiple Spaces to Single Space" type="shared" icon="grepUserIcon" isBranch="false"/>\
+                    <qtext label="Foo to Bar" type="shared" icon="textUserIcon" isBranch="false"/>\
+                </node>\
+                <node label="Foo" type="folder" isBranch="true" icon="folderTree" isOpen="false">\
+                    <qtext label="Straight Double to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Straight Double to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qobject label="Overprint Black Stroke" type="app" icon="objectAppIcon" isBranch="false"/>\
+                    <qtext label="Foo to Bar" type="user" icon="textIcon" isBranch="false"/>\
+                    <qtext label="Dash Dash to Em-dash" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qgrep label="Multiple Spaces to Single Space" type="user" icon="grepIcon" isBranch="false"/>\
+                    <qtext label="Foo to Bar" type="user" icon="textIcon" isBranch="false"/>\
+                    <qtext label="Dash Dash to Em-dash" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Straight Single to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Straight Double to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Dash Dash to Em-dash" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <node label="Set 1" type="folder" isBranch="true" icon="folderTree" isOpen="true">\
+                        <node label="Set 1" type="folder" isBranch="true" icon="folderTree" isOpen="true">\
+                            <qtext label="Straight Single to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                            <qglyph label="Foobarm sdfk jbfbwaljfbw lajfbwj vwjeb " type="user" icon="glyphIcon" isBranch="false"/>\
+                            <qgrep label="Phone Number Conversion (dot format)" type="app" icon="grepApplIcon" isBranch="false"/>\
+                            <qgrep label="Dash to En-dash" type="app" icon="grepApplIcon" isBranch="false"/>\
+                            <qgrep label="Change Arabic Diacritic Color" type="app" icon="grepApplIcon" isBranch="false"/>\
+                        </node>\
+                    </node>\
+                    <qtext label="Straight Double to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qobject label="Drop Shadow" type="app" icon="objectAppIcon" isBranch="false"/>\
+                    <qglyph label="Foobarm sdfk jbfbwaljfbw lajfbwj vwjeb " type="user" icon="glyphIcon" isBranch="false"/>\
+                    <qobject label="Test Object" type="user" icon="objectIcon" isBranch="false"/>\
+                    <qobject label="Test Object" type="user" icon="objectIcon" isBranch="false"/>\
+                    <qgrep label="Multiple Space to Single Space" type="app" icon="grepApplIcon" isBranch="false"/>\
+                    <qgrep label="Multiple Spaces to Single Space" type="user" icon="grepIcon" isBranch="false"/>\
+                    <qtext label="Foo to Bar" type="user" icon="textIcon" isBranch="false"/>\
+                    <qtext label="Straight Double to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Dash Dash to Em-dash" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Straight Double to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Dash Dash to Em-dash" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Straight Double to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Straight Double to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Dash Dash to Em-dash" type="app" icon="textAppIcon" isBranch="false"/>\
+                </node>\
+                <node label="Foobar" type="folder" isBranch="true" icon="folderTree" isOpen="true">\
+                    <qtext label="Straight Double to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Straight Double to Typographers Quote" type="app" icon="textAppIcon" isBranch="false"/>\
+                    <qtext label="Dash Dash to Em-dash" type="app" icon="textAppIcon" isBranch="false"/>\
+                </node>\
+            </root>\
+        ');
+        console.log(xml);
+        console.log(JSON.stringify(xml, null, '  '));
+    </script>
+</body>
+</html>
