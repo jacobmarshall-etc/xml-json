@@ -97,14 +97,12 @@ Parser.prototype._removeEmptyTextNodes = function (children) {
 };
 
 Parser.prototype._serialiseAttributes = function (node) {
-    var attrs = array(node.attributes);
+    var attrs = {},
+        attributes = array(node.attributes);
 
-    for (var index = 0, item; index < attrs.length; index++) {
-        item = attrs[index];
-        attrs[index] = {
-            name: item.nodeName,
-            value: this._parseAttributeValue(item.nodeValue)
-        };
+    for (var index = 0, item; index < attributes.length; index++) {
+        item = attributes[index];
+        attrs[item.nodeName] = this._parseAttributeValue(item.nodeValue);
     }
 
     return attrs;
