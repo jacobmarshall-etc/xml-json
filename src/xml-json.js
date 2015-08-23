@@ -137,5 +137,5 @@ this['XMLJSON'] = {
     Parser: Parser
 };
 
-}).call(this.window || this.self || this.global || this);
+}).call(this || self);
 
