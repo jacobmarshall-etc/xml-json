@@ -105,7 +105,10 @@ Parser.prototype._parseAttributeValue = function (value) {
             }
         },
         function () {
-            return value;
+            return ({
+                'true': true,
+                'false': false
+            })[value];
         }
     ];
 
@@ -115,7 +118,7 @@ Parser.prototype._parseAttributeValue = function (value) {
         }
     }
 
-    return null;
+    return value;
 };
 
 this['XMLJSON'] = {
