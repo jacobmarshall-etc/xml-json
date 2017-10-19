@@ -2,6 +2,8 @@
 
 'use strict';
 
+var MATCH_NUMBER = /^\d*[\d,\.]*\d$/;
+
 function extend (base, obj) {
     if (Object.prototype.toString.call(base) !== '[object Object]') {
         base = {};
@@ -29,7 +31,8 @@ function Parser (options) {
 }
 
 Parser.defaults = {
-    ignoreEmptyTextNodes: true
+    ignoreEmptyTextNodes: true,
+    parsePrimitiveValues: true
 };
 
 Parser.prototype.parseString = function (xml) {
@@ -102,18 +105,24 @@ Parser.prototype._serialiseAttributes = function (node) {
 
     for (var index = 0, item; index < attributes.length; index++) {
         item = attributes[index];
-        attrs[item.nodeName] = this._parseAttributeValue(item.nodeValue);
+        var value = item.nodeValue;
+        if (this.options.parsePrimitiveValues === true) {
+            value = this._parsePrimitiveValue(value);
+        }
+        attrs[item.nodeName] = value;
     }
 
     return attrs;
 };
 
-Parser.prototype._parseAttributeValue = function (value) {
+Parser.prototype._parsePrimitiveValue = function (value) {
     var parsers = [
         function () {
-            var num;
-            if ( ! isNaN(num = parseFloat(value))) {
-                return num;
+            if (value.match(MATCH_NUMBER)) {
+                var num = parseFloat(value);
+                if (!isNaN(num)) {
+                    return num;
+                }
             }
         },
         function () {
